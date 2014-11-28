@@ -1,0 +1,50 @@
+<h1>Album</h1>
+
+  <input type="hidden" id="album_id" value="<%= @album.id %>">
+
+  <p>
+    <b>title: </b>
+    <%= @album.title %>
+  </p>
+
+  <p>
+    <b>Description: </b>
+    <%= @album.description %>
+  </p>
+<p>
+  <b> Created at: </b>
+    <%= @album.created_at  %> 
+
+</p>
+    <%= link_to 'Back', albums_path %>
+    <%= link_to 'Edit gallery', edit_album_path(@album) %>
+    <%= link_to 'Delete gallery', album_path(@album), :method => 'delete', :confirm => 'Are you sure?' %>
+
+
+  <h2>Images</h2>
+</div>
+
+
+  <ul>
+    <% unless @album_images.empty? %>
+        <% @album_images.each do |pic| %>
+            <li  id="picture_<%= pic.id %>">
+                <%= image_tag pic.image.url %>
+                  <p>
+                    <%= link_to "Edit picture", album_image_path(pic) %>
+
+                    <%=
+                        link_to "Delete picture", pic,
+                                :data => { :confirm => "Are you sure?" },
+                                :method => :delete
+                    %>
+
+                  </p>
+
+            </li>
+        <% end %>
+    <% end %>
+  </ul>
+</div>
+
+

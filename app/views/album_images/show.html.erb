@@ -1,0 +1,18 @@
+
+
+<%= link_to image_tag(@album_image.image.url), album_image_path(@album_image) %></br>
+Image : <%= @album_image.image %><br>
+
+  Album_id : <%= @album_image.album_id %>
+
+
+
+  <%= link_to t('.back'),
+              album_image_path, :class => 'btn'  %>
+  <%= link_to t('.edit'),
+              edit_album_image_path(@album_image), :class => 'btn' %>
+
+  <%= link_to t('.destroy'),
+              album_image_path(@album_image),
+              :method => 'delete'
+  %>

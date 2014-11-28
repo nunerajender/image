@@ -1,0 +1,39 @@
+<%- model_class = AlbumImage.new.class -%>
+
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:id) %></th>
+    <th><%= model_class.human_attribute_name(:image) %></th>
+    <th><%= image_tag model_class.human_attribute_name(:image) %></th>
+
+    <th><%= model_class.human_attribute_name(:album_id) %></th>
+    <th><%= model_class.human_attribute_name(:created_at) %></th>
+    <th><%=t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @album_image.each do |picture| %>
+      <tr>
+        <td><%= link_to picture.id, album_image_path(picture) %></td>
+
+        <td><%= picture.image %></td>
+        <td><%= picture.album_id %></td>
+        <td><%=l picture.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_album_image_path(picture) %>
+          <%= link_to t('.destroy'),
+                      album_image_path(picture),
+                      :method => :delete       %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_album_path,
+             %>

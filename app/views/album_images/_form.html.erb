@@ -1,0 +1,16 @@
+<%= form_for [@album, @album_image]  do |f| %>
+
+
+
+    <%= image_tag @album_image.image.url, :id =>
+    @album_image.id%>
+
+
+
+      <%= f.submit  %>
+
+      <%#= link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'%>
+
+
+<% end %>
+
